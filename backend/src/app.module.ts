@@ -1,28 +1,34 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ModalidadeModule } from './app/modalidade/modalidade.module';
-import { TipoCursoModule } from './app/tipoCurso/tipoCurso.module';
-import { CursoModule } from './app/curso/curso.module';
+import { TipoCursoModule } from './tipo_curso/tipo_curso.module';
+import { ModalidadeModule } from './modalidade/modalidade.module';
+import { CursoModule } from './curso/curso.module';
+import { TipoDocumentoModule } from './tipo_documento/tipo_documento.module';
+import { AcademicoModule } from './academico/academico.module';
+
+const configService = new ConfigService();
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: [],
+      host: configService.getOrThrow('MYSQL_HOST'),
+      port: configService.getOrThrow('MYSQL_PORT'),
+      username: configService.getOrThrow('MYSQL_USERNAME'),
+      password: configService.getOrThrow('MYSQL_PASSWORD'),
+      database: configService.getOrThrow('MYSQL_DATABASE'),
+      entities: ['dist/**/*.entity.**'],
       synchronize: true,
     }),
     CursoModule,
     ModalidadeModule,
     TipoCursoModule,
+    TipoDocumentoModule,
+    AcademicoModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
