@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
 import { AcademicoService } from './academico.service';
 import { CreateAcademicoDto } from './dto/create-academico.dto';
 import { UpdateAcademicoDto } from './dto/update-academico.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer'
 
 @Controller('academico')
 export class AcademicoController {
@@ -23,7 +25,16 @@ export class AcademicoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAcademicoDto: UpdateAcademicoDto) {
+  @UseInterceptors(FileInterceptor('documento', {
+    storage: diskStorage({
+      destination: './files',
+      filename: (req, file, cb) => {
+        cb(null, `${file.originalname}`)
+      }
+    }),
+  }))
+  update(@Param('id') id: string, @Body() updateAcademicoDto: UpdateAcademicoDto, @UploadedFile() file: any) {
+    updateAcademicoDto.documento = `files/${file.originalname}`;
     return this.academicoService.update(+id, updateAcademicoDto);
   }
 }
