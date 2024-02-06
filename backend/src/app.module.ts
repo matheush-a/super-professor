@@ -6,6 +6,7 @@ import { ModalidadeModule } from './modalidade/modalidade.module';
 import { CursoModule } from './curso/curso.module';
 import { TipoDocumentoModule } from './tipo_documento/tipo_documento.module';
 import { AcademicoModule } from './academico/academico.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 const configService = new ConfigService();
 
@@ -21,6 +22,9 @@ const configService = new ConfigService();
       database: configService.getOrThrow('MYSQL_DATABASE'),
       entities: ['dist/**/*.entity.**'],
       synchronize: true,
+    }),
+    MulterModule.register({
+      dest: './files',
     }),
     CursoModule,
     ModalidadeModule,
