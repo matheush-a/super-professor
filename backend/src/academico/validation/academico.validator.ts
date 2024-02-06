@@ -29,3 +29,17 @@ export class IsCEP implements ValidatorConstraintInterface {
     return 'CEP inválido';
   }
 }
+
+export function validateUniqueFields(fields: string[]) {
+  const message = [];
+
+  fields.forEach((item) => {
+    message.push(`${item} já está cadastrado.`);
+  })
+
+  return {
+    "message": message,
+    "error": "Unprocessable Entity",
+    "statusCode": 422
+  }
+}

@@ -1,22 +1,74 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAcademicoDto } from './dto/create-academico.dto';
 import { UpdateAcademicoDto } from './dto/update-academico.dto';
+import { Academico } from './entities/academico.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { validateUniqueFields } from './validation/academico.validator';
 
 @Injectable()
 export class AcademicoService {
-  create(createAcademicoDto: CreateAcademicoDto) {
-    return 'This action adds a new academico';
+  constructor(
+    @InjectRepository(Academico)
+    private academicoRepository: Repository<Academico>,
+  ) {}
+
+  async create(createAcademicoDto: CreateAcademicoDto) {
+    const fields = [];
+    const userByEmail: Academico[] = await this.byEmail(createAcademicoDto.email);
+
+    if (userByEmail.length) {
+      fields.push('Email');
+      return validateUniqueFields(fields);
+    }
+
+    return this.academicoRepository.save(createAcademicoDto);
+  }
+
+  async byEmail(email: string) {
+    return this.academicoRepository.find({
+      where: {
+        email
+      }
+    })
+  }
+
+  async byCpf(cpf: string) {
+    return this.academicoRepository.find({
+      where: {
+        cpf
+      }
+    })
   }
 
   findAll() {
-    return `This action returns all academico`;
+    return this.academicoRepository.find({
+      relations: {
+        tipoDocumento: true,
+        curso: true,
+      }
+    });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} academico`;
+    return this.academicoRepository.findOneOrFail({ 
+      where: { id },
+      relations: {
+        tipoDocumento: true,
+        curso: true,
+      }
+    });
   }
 
-  update(id: number, updateAcademicoDto: UpdateAcademicoDto) {
-    return `This action updates a #${id} academico`;
+  async update(id: number, updateAcademicoDto: UpdateAcademicoDto) {
+    const fields = [];
+    const userByCpf: Academico[] = await this.byCpf(updateAcademicoDto?.cpf);
+
+    if (userByCpf.length) {
+      fields.push('CPF');
+      return validateUniqueFields(fields);
+    }
+
+    return this.academicoRepository.update(id, updateAcademicoDto);
   }
 }

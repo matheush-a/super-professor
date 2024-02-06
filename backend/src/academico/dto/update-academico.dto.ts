@@ -10,7 +10,7 @@ export class UpdateAcademicoDto extends PartialType(CreateAcademicoDto) {
 
   @IsOptional()
   @IsString()
-  @Length(11)
+  @Length(11, 11, { message: 'O CPF deve conter 11 dígitos'})
   cpf?: string;
 
   @IsOptional()
