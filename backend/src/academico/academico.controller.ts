@@ -29,12 +29,12 @@ export class AcademicoController {
     storage: diskStorage({
       destination: './files',
       filename: (req, file, cb) => {
-        cb(null, `${file.originalname}`)
+        cb(null, `${file?.originalname || file?.name}`)
       }
     }),
   }))
   update(@Param('id') id: string, @Body() updateAcademicoDto: UpdateAcademicoDto, @UploadedFile() file: any) {
-    updateAcademicoDto.documento = `files/${file.originalname}`;
+    updateAcademicoDto.documento = `files/${file?.originalname || file?.name}`;
     return this.academicoService.update(+id, updateAcademicoDto);
   }
 }
