@@ -22,40 +22,44 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Configurando as variáveis de ambiente
+Crie um arquivo .env na raiz do diretório /backend e copie o conteúdo presente no arquivo .env.example para o arquivo .env.
+<br><br>Obs: é necessário que você ajuste as seguintes variáveis de acordo com as suas configurações do MySQL:
+- MYSQL_HOST
+- MYSQL_PORT
+- MYSQL_USERNAME
+- MYSQL_PASSWORD
+
+## Configurando o banco de dados
+Faça login com o seu usuário e senha MySQL
+<br><br>Através do terminal: ![image](https://github.com/matheush-a/super-professor/assets/33291961/1ce8fa73-a090-44f1-a6f6-e9aa575b974b)
+
+<br>Após realizar o login, crie uma base de dados chamada 'matriculas'![image](https://github.com/matheush-a/super-professor/assets/33291961/8c51f6a8-6bcb-4524-a6d4-2336e3af8928)
+
+
+
+
+## Executando a aplicação
 
 ```bash
-# development
+# Modo de desenvolvimento
 $ npm run start
 
-# watch mode
+# Modo de desenvolvimento com hot-reload
 $ npm run start:dev
 
-# production mode
+# Modo de produção
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
