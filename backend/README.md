@@ -65,6 +65,13 @@ $ npm run start:prod
 - Abra o arquivo matriculas.dataset.sql, este arquivo está disponível no caminho /backend/seeds/
 - Copie o conteúdo e execute na base de dados MySQL
 
+## Integrações
+![image](https://github.com/matheush-a/super-professor/assets/33291961/5c9fb9fa-6b63-4aba-8112-9fb1fe6b102b)
+<br><br>Foi realizada uma integração com a API ViaCEP para realizar as validações de CEP dos usuários.
+<br><br>A decisão de utilizar esta API foi tomada principalmente pela facilidade de integração e também por ser uma API robusta e gratuita.
+
+https://viacep.com.br/
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
