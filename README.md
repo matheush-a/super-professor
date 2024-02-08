@@ -9,3 +9,13 @@ Vale ressaltar o motivo para algumas decisões:
 - Documento poderia ser abstraído como uma entidade e ter um relacionamento de 1 para 1 com a entidade **acadêmico** porém também para simplificação de escopo, documento é um atributo da entidade **acadêmico** e foi estabelecida uma relação entre **acadêmico** e **tipo_documento** para distinguir se o documento enviado é do tipo cpf ou rg.
 
 ![sistemaDeMatricula_MER_UML](https://github.com/matheush-a/super-professor/assets/33291961/1cc0d149-058c-45e6-8184-cac6b7c279b6)
+
+## FRONT-END
+O front-end da aplicação foi desenvolvido em Vue.js, com o projeto inicializado utilizando Vite.
+
+## BACK-END
+O back-end da aplicação foi desenvolvido em NestJS
+
+## PROJETO EXECUTANDO NO BUCKET
+http://vuejs-superprofessor.s3-website-sa-east-1.amazonaws.com/
+
