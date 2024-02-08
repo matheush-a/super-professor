@@ -46,8 +46,7 @@ Faça login com o seu usuário e senha MySQL
 
 <br>Após realizar o login, crie uma base de dados chamada 'matriculas'![image](https://github.com/matheush-a/super-professor/assets/33291961/8c51f6a8-6bcb-4524-a6d4-2336e3af8928)
 
-
-
+<br>Utilize a base de dados 'matriculas' ![image](https://github.com/matheush-a/super-professor/assets/33291961/07148c90-6ecc-4675-852a-59eb92cb6a60)
 
 ## Executando a aplicação
 
@@ -61,6 +60,10 @@ $ npm run start:dev
 # Modo de produção
 $ npm run start:prod
 ```
+
+## Populando os dados nas tabelas
+- Abra o arquivo matriculas.dataset.sql, este arquivo está disponível no caminho /backend/seeds/
+- Copie o conteúdo e execute na base de dados MySQL
 
 ## Support
 
