@@ -1,5 +1,6 @@
 # super-professor
 Teste prático desenvolvido para oportunidade de Desenvolvedor Full Stack. O back-end é desenvolvido em NestJS, um framework Node.js e o front-end é desenvolvido em Vue.js na versão 3
+<br><br>Se houverem quaisquer dúvidas ou problemas na execução do projeto, estou à disposição: matheusalmeida97@proton.me
 
 ## MER
 O Modelo Entidade Relacionamento (MER) a seguir descreve o sistema de matrículas implementado.
@@ -13,8 +14,14 @@ Vale ressaltar o motivo para algumas decisões:
 ## FRONT-END
 O front-end da aplicação foi desenvolvido em Vue.js, com o projeto inicializado utilizando Vite.
 
+O README.md do front-end está disponível em:
+https://github.com/matheush-a/super-professor/tree/main/frontend
+
 ## BACK-END
 O back-end da aplicação foi desenvolvido em NestJS
+
+O README.md da api está disponível em:
+https://github.com/matheush-a/super-professor/tree/main/backend
 
 ## PROJETO EXECUTANDO NO BUCKET
 http://vuejs-superprofessor.s3-website-sa-east-1.amazonaws.com/
